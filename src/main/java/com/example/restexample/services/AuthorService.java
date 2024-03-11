@@ -36,7 +36,7 @@ public class AuthorService implements IAuthorService {
 
     @Override
     public void updateAuthor(Long id, Author updatedAuthor) {
-        updatedAuthor.setId(id); // just incase user sent author object with wrong id
+        updatedAuthor.setId(id);
         authorRepository.save(updatedAuthor);
     }
 
