@@ -36,6 +36,7 @@ public class AuthorService implements IAuthorService {
 
     @Override
     public void updateAuthor(Long id, Author updatedAuthor) {
+        getAuthorById(id); // check if exists
         updatedAuthor.setId(id);
         authorRepository.save(updatedAuthor);
     }
