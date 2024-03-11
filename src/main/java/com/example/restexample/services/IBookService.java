@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IBookService {
 
-    List<Book> getAllBooks(Long id);
+    List<Book> getAllBooks();
     Book getBookById(Long id);
     void createBook(Book book);
     void updateBook(Long id, Book updatedBook);

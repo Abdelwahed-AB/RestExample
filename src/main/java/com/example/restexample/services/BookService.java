@@ -1,8 +1,10 @@
 package com.example.restexample.services;
 
+import com.example.restexample.entities.Author;
 import com.example.restexample.entities.Book;
 import com.example.restexample.exceptions.BookAuthorRequiredException;
 import com.example.restexample.exceptions.BookNotFoundException;
+import com.example.restexample.repositories.AuthorRepository;
 import com.example.restexample.repositories.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,9 +16,10 @@ import java.util.Optional;
 @Service
 public class BookService implements IBookService{
     private final BookRepository bookRepository;
+    private final AuthorRepository authorRepository;
 
     @Override
-    public List<Book> getAllBooks(Long id) {
+    public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @PropertySource("classpath:api.properties")
-@RequestMapping("${apiversion}/author")
+@RequestMapping("${api-url}/author")
 @RequiredArgsConstructor
 public class AuthorController {
 
