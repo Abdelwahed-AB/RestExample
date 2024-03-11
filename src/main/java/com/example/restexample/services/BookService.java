@@ -7,6 +7,9 @@ import com.example.restexample.exceptions.BookNotFoundException;
 import com.example.restexample.repositories.AuthorRepository;
 import com.example.restexample.repositories.BookRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +22,9 @@ public class BookService implements IBookService{
     private final AuthorRepository authorRepository;
 
     @Override
-    public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+    public Page<Book> getAllBooks(int page, int size) {
+        Pageable bookPageable = PageRequest.of(page, size);
+        return bookRepository.findAll(bookPageable);
     }
 
     @Override

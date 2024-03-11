@@ -1,12 +1,11 @@
 package com.example.restexample.services;
 
 import com.example.restexample.entities.Book;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface IBookService {
 
-    List<Book> getAllBooks();
+    Page<Book> getAllBooks(int page, int size);
     Book getBookById(Long id);
     void createBook(Book book);
     void updateBook(Long id, Book updatedBook);

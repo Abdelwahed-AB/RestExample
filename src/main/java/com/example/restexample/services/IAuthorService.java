@@ -1,12 +1,12 @@
 package com.example.restexample.services;
 
 import com.example.restexample.entities.Author;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
 
 public interface IAuthorService {
 
-    List<Author> getAllAuthors();
+    Page<Author> getAllAuthors(int page, int size);
     Author getAuthorById(Long id);
     void createAuthor(Author author);
     void updateAuthor(Long id, Author updatedAuthor);
