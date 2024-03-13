@@ -3,7 +3,9 @@ package com.example.restexample.mappers;
 import com.example.restexample.dto.BookDto;
 import com.example.restexample.entities.Author;
 import com.example.restexample.entities.Book;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BookMapper implements IBookMapper{
     @Override
     public Book bookDtoToBook(BookDto bookDto) {

@@ -1,13 +1,15 @@
 package com.example.restexample.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDate;
 
-@Getter
-@Setter
+@Data
 @Entity
 public class Book {
     @Id

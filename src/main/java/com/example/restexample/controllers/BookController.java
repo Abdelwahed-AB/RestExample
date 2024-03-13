@@ -4,6 +4,7 @@ import com.example.restexample.dto.BookDto;
 import com.example.restexample.entities.Book;
 import com.example.restexample.mappers.IBookMapper;
 import com.example.restexample.services.IBookService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -29,13 +30,14 @@ public class BookController {
     }
 
     @PostMapping
-    public void createBook(@RequestBody BookDto book){
+    public void createBook(@RequestBody @Valid BookDto book){
         Book tmp = bookMapper.bookDtoToBook(book);
+        tmp.setId(0L);
         bookService.createBook(tmp);
     }
 
     @PutMapping("/{bookid}")
-    public void updateBook(@PathVariable("bookid") Long id, @RequestBody BookDto book){
+    public void updateBook(@PathVariable("bookid") Long id, @RequestBody @Valid BookDto book){
         Book tmp = bookMapper.bookDtoToBook(book);
         bookService.updateBook(id, tmp);
     }

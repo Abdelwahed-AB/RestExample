@@ -4,6 +4,7 @@ import com.example.restexample.dto.AuthorDto;
 import com.example.restexample.entities.Author;
 import com.example.restexample.mappers.IAuthorMapper;
 import com.example.restexample.services.IAuthorService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.domain.Page;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @RestController
 @PropertySource("classpath:api.properties")
-@RequestMapping("${api-url}/author")
+@RequestMapping("${api-url}/authors")
 @RequiredArgsConstructor
 public class AuthorController {
 
@@ -36,13 +37,14 @@ public class AuthorController {
     }
 
     @PostMapping
-    public void createAuthor(@RequestBody AuthorDto author) {
+    public void createAuthor(@RequestBody @Valid AuthorDto author) {
         Author tmp = authorMapper.authorDtoToAuthor(author);
+        tmp.setId(0L);
         authorService.createAuthor(tmp);
     }
 
     @PutMapping("/{authorid}")
-    public void updateAuthor(@PathVariable("authorid") Long id, @RequestBody AuthorDto author) {
+    public void updateAuthor(@PathVariable("authorid") Long id, @RequestBody @Valid AuthorDto author) {
         Author tmp = authorMapper.authorDtoToAuthor(author);
         authorService.updateAuthor(id, tmp);
     }
